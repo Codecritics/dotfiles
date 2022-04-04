@@ -11,7 +11,7 @@ show-help:
 .PHONY: setup-home
 ## Install and link all packages for home
 setup-home:
-	sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply PurpleBooth
+	sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply Codecritics
 
 .PHONY: setup-work
 ## Install and link all packages for work
