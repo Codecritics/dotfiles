@@ -14,7 +14,7 @@ export PATH=/usr/local/Cellar/hping/3.20051105/sbin:$PATH
 export PATH=/usr/local/Cellar/php/7.4.3/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/codecriticsamalto/.oh-my-zsh"
+export ZSH="/Users/$HOME/.oh-my-zsh"
 
 # Composer
 export PATH=$HOME/.composer/vendor/bin:$PATH
@@ -115,7 +115,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias go='cd ~/Documents/Amalto'
 alias vagrant-manager="sudo /Applications/Vagrant\ Manager.app/Contents/MacOS/Vagrant\ Manager & disown"
-go_to() { idea "/Users/codecriticsamalto/Documents/Amalto/$1"; }
+go_to() { idea "/Users/$HOME/Documents/Amalto/$1"; }
 # source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
 export PATH="/usr/local/sbin:$PATH"
 source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -125,6 +125,6 @@ export PATH="/usr/local/opt/postgresql@12/bin:$PATH"
 # zlib
 export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
 export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
-export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig". "/Users/codecriticsamalto/.acme.sh/acme.sh.env"
-. "/Users/codecriticsamalto/.acme.sh/acme.sh.env"
+export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig". "/Users/$HOME/.acme.sh/acme.sh.env"
+. "/Users/$HOME/.acme.sh/acme.sh.env"
 export GPG_TTY=$(tty)
