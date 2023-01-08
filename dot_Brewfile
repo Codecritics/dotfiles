@@ -3,6 +3,7 @@
 
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+tap "romkatv/powerlevel10k" 
 
 #
 #   Programs
@@ -31,7 +32,7 @@ brew "mockery"      # Go mock generator
 brew "neovim"
 brew "node"
 brew "openssh"
-brew "romkatv/powerlevel10k/powerlevel10k"
+brew "powerlevel10k"
 brew "python"
 brew "pyenv"
 brew "ripgrep"
