@@ -1,7 +1,28 @@
+#####################################################################
+# Environment Variables                                             #
+#####################################################################
+
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+
+#####################################################################
+# Path                                                              #
+#####################################################################
+
+if [ -d "/opt/homebrew" ] ; then
+    export PATH="/opt/homebrew/sbin:${PATH}"
+    export PATH="/opt/homebrew/bin:${PATH}"
+fi
+export PATH="${HOME}/.bin:${PATH}"
+
+#####################################################################
+# Terminal Style                                                    #
+#####################################################################
+
+# ZSH
+setopt auto_cd
+
 
 # Python Binaries
 export PATH=$HOME/Library/Python/3.7/bin:$PATH
