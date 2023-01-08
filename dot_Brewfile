@@ -3,6 +3,7 @@
 
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+tap "sambadevi/powerlevel9k"
 
 #
 #   Programs
