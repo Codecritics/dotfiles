@@ -24,86 +24,95 @@ export PATH="${HOME}/.bin:${PATH}"
 setopt auto_cd
 
 
-# Python Binaries
-export PATH=$HOME/Library/Python/3.7/bin:$PATH
-export PATH=$HOME/Library/Python/2.7/bin:$PATH
+# ZPlug
+source "$ZPLUG_HOME/init.zsh"
 
-# Hping
-export PATH=/usr/local/Cellar/hping/3.20051105/sbin:$PATH
+zplug "lib/history", from:oh-my-zsh
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-history-substring-search", defer:3
+zplug "modules/gnu-utility", from:prezto
+zplug "modules/fasd", from:prezto
+zplug "b4b4r07/enhancd", use:init.sh
 
-# PHP
-export PATH=/usr/local/Cellar/php/7.4.3/bin:$PATH
+zplug "romkatv/powerlevel10k", as:theme, depth:1
+ZPLUG_MTIME_FILE="$HOME/.zplug"
+
+if ! zplug check --verbose; then
+    zplug install
+else
+    if ! [ -f "$ZPLUG_MTIME_FILE" ] || [ -n "$(find "$ZPLUG_MTIME_FILE" -mmin +$((60 * 24 * 30)))" ]; then
+        touch "$ZPLUG_MTIME_FILE"
+        zplug update
+    fi
+fi
+
+if zplug check "zsh-users/zsh-autosuggestions"; then
+  export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
+fi
+
+if zplug check "b4b4r07/enhancd"; then
+  export ENHANCD_DISABLE_DOT="1"
+  export ENHANCD_DISABLE_HYPHEN="1"
+  export ENHANCD_DOT_SHOW_FULLPATH="1"
+fi
+
+zplug load
+
+if zplug check zsh-users/zsh-autosuggestions; then
+    ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down)
+    ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-line-or-history}")
+fi
+
+if zplug check zsh-users/zsh-history-substring-search; then
+    bindkey '\eOA' history-substring-search-up
+    bindkey '\eOB' history-substring-search-down
+fi
+
+
+eval "$(starship init zsh)"
+
+
+#####################################################################
+# Auto-Complete                                                     #
+#####################################################################
+
+fpath=("$(brew --prefix)/share/zsh-completions" $fpath)
+source "$(brew --prefix)/share/zsh/site-functions"
+source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+source <(fasd --init auto)
+source "${HOME}/.cargo/env"
+source "${HOME}/.travis/travis.sh"
+source <(thefuck --alias)
+
+if brew command command-not-found-init > /dev/null 2>&1; then
+  source <(brew command-not-found-init)
+fi
+
+
+#####################################################################
+# Aliases                                                           #
+#####################################################################
+
+# alias realpath="grealpath"
+alias more="less"
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
+
+function whatismyip() { dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}'; }
+function ll() { ls -lrathF $@; }
+function o() { fasd -ae open $@; }
+function oo() { fasd -sae open $@; }
+function use_java () { export JAVA_HOME="$(/usr/libexec/java_home -v ${1})"; }
+alias python=python3
+alias pip=pip3
+alias vagrant-manager="sudo /Applications/Vagrant\ Manager.app/Contents/MacOS/Vagrant\ Manager & disown"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/$HOME/.oh-my-zsh"
 
-# Composer
-export PATH=$HOME/.composer/vendor/bin:$PATH
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(git colored-man-pages zsh-syntax-highlighting zsh-autosuggestions history kubectl)
 
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv root_indicator background_jobs history time)
@@ -135,7 +144,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias go='cd ~/Documents/Amalto'
-alias vagrant-manager="sudo /Applications/Vagrant\ Manager.app/Contents/MacOS/Vagrant\ Manager & disown"
+
 go_to() { idea "/Users/$HOME/Documents/Amalto/$1"; }
 # source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
 export PATH="/usr/local/sbin:$PATH"
