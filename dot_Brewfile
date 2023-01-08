@@ -7,6 +7,8 @@ tap "homebrew/core"
 #
 #   Programs
 #
+brew "awscli"
+brew "azure-cli"
 brew "bat"          # cat replacement
 brew "chezmoi"      # dotfile management
 brew "ctop"         # top for Docker containers
@@ -15,26 +17,36 @@ brew "exa"          # ls replacement
 brew "fd"           # find replacement
 brew "fish"         # shell of choice
 brew "fzf"          # fuzzy finder
-brew "gh"			# GitHub CLI
+brew "gh"			      # GitHub CLI
 brew "ghq"          # git repo management
 brew "git"
 brew "go"
+brew "just"         # An handy way to save and run project-specific commands
 brew "jq"           # JSON querying/manipulation
+brew "kind"
 brew "kubectl"      # Kubernetes CLI tool
 brew "kubectx"      # Kubernetes context/namespace switching
+brew "k9s"
 brew "mockery"      # Go mock generator
 brew "neovim"
+brew "node"
+brew "openssh"
+brew "powerlevel9k"
 brew "python"
+brew "pyenv"
 brew "ripgrep"
 brew "serverless"
 brew "starship"     # shell powerline
 brew "staticcheck"  # static code analysis for Go
 brew "terraform"
 brew "tig"          # git interface
+brew "tldr"         # short documentation command
 brew "trash"        # rm to trashcan
 brew "yq"           # YAML querying/manipulation
+brew "wget"
 brew "zsh"          # another shell of choice
 brew "zsh-completions"
+
 
 cask "font-caskaydia-cove-nerd-font"
 cask "font-fira-code-nerd-font"
