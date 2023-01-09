@@ -94,11 +94,7 @@ eval "$(starship init zsh)"
 
 fpath=("$(brew --prefix)/share/zsh-completions" $fpath)
 source "$(brew --prefix)/share/zsh/site-functions"
-source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 source <(fasd --init auto)
-source "${HOME}/.cargo/env"
-source "${HOME}/.travis/travis.sh"
 source <(thefuck --alias)
 
 if brew command command-not-found-init > /dev/null 2>&1; then
@@ -160,16 +156,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias go='cd ~/Documents/Amalto'
 
-go_to() { idea "/Users/$HOME/Documents/Amalto/$1"; }
-# source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
 export PATH="/usr/local/sbin:$PATH"
-source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
- test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-export PATH="/usr/local/opt/postgresql@12/bin:$PATH"
 
-# zlib
-export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
-export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
-export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig". "/Users/$HOME/.acme.sh/acme.sh.env"
-. "/Users/$HOME/.acme.sh/acme.sh.env"
-export GPG_TTY=$(tty)
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
