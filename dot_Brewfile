@@ -13,6 +13,7 @@ brew "azure-cli"
 brew "bat"          # cat replacement
 brew "chezmoi"      # dotfile management
 brew "ctop"         # top for Docker containers
+brew "coreutils"
 brew "diff-so-fancy"
 brew "exa"          # ls replacement
 brew "fd"           # find replacement
