@@ -93,7 +93,7 @@ eval "$(starship init zsh)"
 #####################################################################
 # Auto-Complete                                                     #
 #####################################################################
-
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 fpath=("$(brew --prefix)/share/zsh-completions" $fpath)
 source "$(brew --prefix)/share/zsh/site-functions"
 source <(fasd --init auto)
