@@ -120,6 +120,7 @@ function oo() { fasd -sae open $@; }
 function use_java () { export JAVA_HOME="$(/usr/libexec/java_home -v ${1})"; }
 alias python=python3
 alias pip=pip3
+alias k=kubectl
 alias vagrant-manager="sudo /Applications/Vagrant\ Manager.app/Contents/MacOS/Vagrant\ Manager & disown"
 
 # Path to your oh-my-zsh installation.
