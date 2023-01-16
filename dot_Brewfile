@@ -34,6 +34,7 @@ brew "mockery"      # Go mock generator
 brew "neovim"
 brew "node"
 brew "openssh"
+brew "pinentry"
 brew "powerlevel10k"
 brew "python"
 brew "pyenv"
