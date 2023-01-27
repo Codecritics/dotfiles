@@ -31,7 +31,7 @@ brew "kubectl"      # Kubernetes CLI tool
 brew "kubectx"      # Kubernetes context/namespace switching
 brew "k9s"
 brew "mockery"      # Go mock generator
-brew "mysql".       # Needed to get nodes
+brew "mysql"       # Needed to get nodes
 brew "neovim"
 brew "node"
 brew "openssh"
