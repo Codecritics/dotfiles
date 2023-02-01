@@ -42,6 +42,7 @@ brew "powerlevel10k"
 brew "python"
 brew "pyenv"
 brew "ripgrep"
+brew "saml2aws"
 brew "serverless"
 brew "starship"     # shell powerline
 brew "staticcheck"  # static code analysis for Go
