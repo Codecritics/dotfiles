@@ -31,10 +31,11 @@ brew "kubectl"      # Kubernetes CLI tool
 brew "kubectx"      # Kubernetes context/namespace switching
 brew "k9s"
 brew "mockery"      # Go mock generator
-brew "mysql"       # Needed to get nodes
+brew "mysql"        # Needed to get nodes
 brew "neovim"
 brew "node"
 brew "openssh"
+brew "openldap"    
 brew "pinentry"
 brew "podman"
 brew "powerlevel10k"
@@ -44,7 +45,7 @@ brew "ripgrep"
 brew "serverless"
 brew "starship"     # shell powerline
 brew "staticcheck"  # static code analysis for Go
-brew "terraform"
+brew "terraform"    # IaC
 brew "tflint"       # lint for terraform
 brew "tig"          # git interface
 brew "thefuck"      # that corrects errors in previous console commands.
