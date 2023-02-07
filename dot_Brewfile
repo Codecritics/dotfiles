@@ -35,6 +35,7 @@ brew "mysql"        # Needed to get nodes
 brew "neovim"
 brew "node"
 brew "openssh"
+brew "openshif-cli"
 brew "openldap"    
 brew "pinentry"
 brew "podman"
