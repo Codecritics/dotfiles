@@ -129,7 +129,10 @@ then
   complete -o nospace -C /usr/local/bin/terraform terraform
 fi
 
-
+if type saml2aws &>/dev/null
+then
+  eval "$(saml2aws --completion-script-zsh)"
+fi
 #####################################################################
 # Aliases                                                           #
 #####################################################################
