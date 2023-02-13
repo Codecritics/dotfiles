@@ -48,6 +48,7 @@ brew "serverless"
 brew "starship"     # shell powerline
 brew "staticcheck"  # static code analysis for Go
 brew "terraform"    # IaC
+brew "terraform-docs" 
 brew "tflint"       # lint for terraform
 brew "tig"          # git interface
 brew "thefuck"      # that corrects errors in previous console commands.
