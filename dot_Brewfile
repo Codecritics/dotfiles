@@ -45,6 +45,7 @@ brew "pre-commit"
 brew "python"
 brew "pyenv"
 brew "ripgrep"
+brew "rosa-cli"
 brew "saml2aws"
 brew "serverless"
 brew "starship"     # shell powerline
