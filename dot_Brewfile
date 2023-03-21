@@ -16,6 +16,7 @@ brew "chezmoi"      # dotfile management
 brew "ctop"         # top for Docker containers
 brew "coreutils"
 brew "diff-so-fancy"
+brew "docker-compose"
 brew "exa"          # ls replacement
 brew "fd"           # find replacement
 brew "fish"         # shell of choice
