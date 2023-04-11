@@ -8,6 +8,7 @@ tap "romkatv/powerlevel10k"
 #
 #   Programs
 #
+brew "act"
 brew "argocd"
 brew "awscli"
 brew "azure-cli"
