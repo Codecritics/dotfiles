@@ -13,6 +13,7 @@ brew "argocd"
 brew "awscli"
 brew "azure-cli"
 brew "bat"          # cat replacement
+brew "chart-testing"
 brew "chezmoi"      # dotfile management
 brew "ctop"         # top for Docker containers
 brew "coreutils"
