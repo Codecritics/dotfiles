@@ -63,6 +63,7 @@ brew "tig"          # git interface
 brew "thefuck"      # that corrects errors in previous console commands.
 brew "tldr"         # short documentation command
 brew "trash"        # rm to trashcan
+brew "yamllint"
 brew "yq"           # YAML querying/manipulation
 brew "watch"
 brew "wget"
