@@ -39,6 +39,7 @@ brew "k9s"
 brew "minikube"
 brew "mockery"      # Go mock generator
 brew "mysql"        # Needed to get nodes
+brew "nvm"
 brew "neovim"
 brew "node"
 brew "opa"
