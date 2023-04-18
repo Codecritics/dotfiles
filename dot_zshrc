@@ -134,13 +134,21 @@ then
   eval "$(saml2aws --completion-script-zsh)"
 fi
 
-if type docker &>/dev/null
-then
-  etc=/Applications/Docker.app/Contents/Resources/etc
-  ln -s $etc/docker.zsh-completion /usr/local/share/zsh/site-functions/_docker
-  ln -s $etc/docker-machine.zsh-completion /usr/local/share/zsh/site-functions/_docker-machine
-  ln -s $etc/docker-compose.zsh-completion /usr/local/share/zsh/site-functions/_docker-compose
-fi
+#if type docker &>/dev/null
+#then
+#  src=/Applications/Docker.app/Contents/Resources/etc
+#  dst=/usr/local/etc/bash_completion.d
+
+#  ln -s $src/docker.bash-completion $dst/docker
+#  ln -s $src/docker-compose.bash-completion $dst/docker-compose
+
+#  source /usr/local/etc/bash_completion
+
+#  rm $dst/docker
+#  rm $dst/docker-compose
+#  etc=/Applications/Docker.app/Contents/Resources/etc
+#  echo "Docker completion works."
+#fi
 #####################################################################
 # Aliases                                                           #
 #####################################################################
