@@ -134,6 +134,12 @@ then
   eval "$(saml2aws --completion-script-zsh)"
 fi
 
+if [ -d "/opt/homebrew/opt/nvm" ]; then  
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+fi
+
 #if type docker &>/dev/null
 #then
 #  src=/Applications/Docker.app/Contents/Resources/etc
