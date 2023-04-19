@@ -27,6 +27,7 @@ brew "gh"			      # GitHub CLI
 brew "ghq"          # git repo management
 brew "git"
 brew "gnupg"
+brew "grpcurl"
 brew "go"
 brew "helm"
 brew "hugo"
