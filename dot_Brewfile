@@ -31,6 +31,7 @@ brew "grpcurl"
 brew "go"
 brew "helm"
 brew "hugo"
+brew "jfrog-cli"
 brew "just"         # An handy way to save and run project-specific commands
 brew "jq"           # JSON querying/manipulation
 brew "kind"
