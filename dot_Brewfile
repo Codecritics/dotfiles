@@ -1,7 +1,7 @@
 # Dependencies installed via `brew bundle`
 # https://github.com/Homebrew/homebrew-bundle
 
-tap "homebrew/cask-fonts"
+tap "homebrew/cask"
 tap "homebrew/core"
 tap "romkatv/powerlevel10k" 
 
