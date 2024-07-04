@@ -19,7 +19,6 @@ brew "ctop"         # top for Docker containers
 brew "coreutils"
 brew "diff-so-fancy"
 brew "docker-compose"
-brew "exa"          # ls replacement
 brew "fd"           # find replacement
 brew "fish"         # shell of choice
 brew "fzf"          # fuzzy finder
@@ -38,6 +37,7 @@ brew "kind"
 brew "kubectl"      # Kubernetes CLI tool
 brew "kubectx"      # Kubernetes context/namespace switching
 brew "k9s"
+brew "lsd"          # ls replacement
 brew "minikube"
 brew "mkcert"
 brew "mockery"      # Go mock generator
