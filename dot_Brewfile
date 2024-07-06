@@ -49,7 +49,7 @@ brew "opa"
 brew "openssh"
 brew "openshift-cli"
 brew "openldap"
-brew "pinentry"
+brew "pinentry-mac"
 brew "podman"
 brew "powerlevel10k"
 brew "pre-commit"
@@ -76,6 +76,7 @@ brew "wget"
 brew "zplug"        # A plugin manager for ZSH
 brew "zsh"          # another shell of choice
 brew "zsh-completions"
+brew "1password-cli"
 
 
 cask "font-caskaydia-cove-nerd-font"
