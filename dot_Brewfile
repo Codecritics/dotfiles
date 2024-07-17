@@ -12,6 +12,7 @@ brew "act"
 brew "argocd"
 brew "awscli"
 brew "azure-cli"
+brew "Azure/kubelogin/kubelogin"
 brew "bat"          # cat replacement
 brew "chart-testing"
 brew "chezmoi"      # dotfile management
