@@ -38,6 +38,8 @@ brew "kind"
 brew "krew"
 brew "kubectl"      # Kubernetes CLI tool
 brew "kubectx"      # Kubernetes context/namespace switching
+brew "kube-linter"  # Kubernetes Linter of Kubernetes manifests
+brew "kubeseal"     # Kubernetes Secret Encryption
 brew "k9s"
 brew "lsd"          # ls replacement
 brew "minikube"
