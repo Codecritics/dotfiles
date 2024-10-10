@@ -1,6 +1,5 @@
+echo "Starting .zshrc initialization"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -16,7 +15,7 @@ export LANG=en_US.UTF-8
 export GPG_TTY=$(tty)
 
 # Favourites
-export CODEDIR="$(grealpath ${HOME}/Code)"
+export CODEDIR="${HOME}/Code"
 
 # Golang
 export GOCODEDIR="${CODEDIR}/golang"
@@ -28,20 +27,18 @@ export ZPLUG_HOME="$(brew --prefix)/opt/zplug"
 # Shell Name
 export SHELL_NAME="zsh"
 
+# Krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 #####################################################################
 # Path                                                              #
 #####################################################################
 
-if [ -d "/opt/homebrew" ] ; then
-    export PATH="/opt/homebrew/sbin:${PATH}"
-    export PATH="/opt/homebrew/bin:${PATH}"
-fi
-export PATH="${HOME}/.bin:${PATH}"
+# Combine PATH exports into one
+export PATH="/Users/mutw/.local/bin:/opt/homebrew/sbin:/opt/homebrew/bin:/usr/local/sbin:${HOME}/.bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
-export PATH="/usr/local/sbin:$PATH"
 #####################################################################
 # Terminal Style                                                    #
 #####################################################################
@@ -49,13 +46,17 @@ export PATH="/usr/local/sbin:$PATH"
 # ZSH
 setopt auto_cd
 
-
 # ZPlug
 source "$ZPLUG_HOME/init.zsh"
 
 zplug "lib/history", from:oh-my-zsh
-zplug "plugins/git",   from:oh-my-zsh
-zplug "plugins/history",   from:oh-my-zsh
+zplug "plugins/asdf", from:oh-my-zsh
+zplug "plugins/aws", from:oh-my-zsh
+zplug "plugins/azure", from:oh-my-zsh
+zplug "plugins/command-not-found", from:oh-my-zsh
+
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/history", from:oh-my-zsh
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:3
@@ -63,6 +64,8 @@ zplug "modules/gnu-utility", from:prezto
 zplug "modules/fasd", from:prezto
 zplug "b4b4r07/enhancd", use:init.sh
 
+zplug "mfaerevaag/wd", as:command, use:"wd.sh", hook-load:"wd() { . $ZPLUG_REPOS/mfaerevaag/wd/wd.sh }"
+zplug "romkatv/zsh-prompt-benchmark"
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 ZPLUG_MTIME_FILE="$HOME/.zplug"
 
@@ -97,13 +100,12 @@ if zplug check zsh-users/zsh-history-substring-search; then
     bindkey '\eOB' history-substring-search-down
 fi
 
-
 eval "$(starship init zsh)"
-
 
 #####################################################################
 # Auto-Complete                                                     #
 #####################################################################
+
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 fpath=("$(brew --prefix)/share/zsh-completions" $fpath)
 source "$(brew --prefix)/share/zsh/site-functions"
@@ -114,23 +116,20 @@ if brew command command-not-found-init > /dev/null 2>&1; then
   source <(brew command-not-found-init)
 fi
 
-if type brew &>/dev/null
-then
+if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
   chmod -R go-w "$(brew --prefix)/share"
   autoload -Uz compinit
-  compinit
+  compinit -C
 fi
 
-if type terraform &>/dev/null
-then
+if type terraform &>/dev/null; then
   autoload -U +X bashcompinit && bashcompinit
   autoload -Uz compinit && compinit
   complete -o nospace -C /usr/local/bin/terraform terraform
 fi
 
-if type saml2aws &>/dev/null
-then
+if type saml2aws &>/dev/null; then
   eval "$(saml2aws --completion-script-zsh)"
 fi
 
@@ -140,29 +139,10 @@ if [ -d "/opt/homebrew/opt/nvm" ]; then
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 fi
 
-#if type docker &>/dev/null
-#then
-#  src=/Applications/Docker.app/Contents/Resources/etc
-#  dst=/usr/local/etc/bash_completion.d
-
-#  ln -s $src/docker.bash-completion $dst/docker
-#  ln -s $src/docker-compose.bash-completion $dst/docker-compose
-
-#  source /usr/local/etc/bash_completion
-
-#  rm $dst/docker
-#  rm $dst/docker-compose
-#  etc=/Applications/Docker.app/Contents/Resources/etc
-#  echo "Docker completion works."
-#  ln -s $etc/docker.zsh-completion /usr/local/share/zsh/site-functions/_docker
-#  ln -s $etc/docker-machine.zsh-completion /usr/local/share/zsh/site-functions/_docker-machine
-#  ln -s $etc/docker-compose.zsh-completion /usr/local/share/zsh/site-functions/_docker-compose
-#fi
 #####################################################################
 # Aliases                                                           #
 #####################################################################
 
-# alias realpath="grealpath"
 alias more="less"
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
@@ -179,9 +159,10 @@ alias vagrant-manager="sudo /Applications/Vagrant\ Manager.app/Contents/MacOS/Va
 alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+echo "Finished .zshrc initialization"
+eval "$(gh copilot alias -- zsh)"
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
