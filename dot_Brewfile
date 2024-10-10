@@ -35,6 +35,7 @@ brew "jfrog-cli"
 brew "just"         # An handy way to save and run project-specific commands
 brew "jq"           # JSON querying/manipulation
 brew "kind"
+brew "krew"
 brew "kubectl"      # Kubernetes CLI tool
 brew "kubectx"      # Kubernetes context/namespace switching
 brew "k9s"
